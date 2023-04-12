@@ -1,0 +1,9 @@
+make board
+showmoves:
+    blocked
+    pinned
+    check
+    king-moves
+    checkmate
+makemove
+timer
