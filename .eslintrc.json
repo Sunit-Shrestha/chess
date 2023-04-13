@@ -11,8 +11,5 @@
         "sourceType": "module"
     },
     "rules": {
-    },
-    "globals": {
-        "__dirname": true
     }
 }

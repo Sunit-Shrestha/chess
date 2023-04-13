@@ -1,0 +1,38 @@
+$pieces: ("k", "q", "b", "n", "r", "p");
+
+body {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	margin: 0px;
+	height: 100vh;
+	background-color: grey;
+
+	#board {
+		display: grid;
+		grid-template-columns: repeat(8, 1fr);
+		background-image: url("../images/board.png");
+		background-size: 600px;
+		height: 600px;
+		width: 600px;
+		border: 5px solid black;
+		border-radius: 15px;
+
+		.box {
+			background-repeat: no-repeat;
+			background-position-x: center;
+			background-position-y: center;
+			background-size: 60px;
+		}
+	}
+}
+
+@each $piece in $pieces {
+	.w#{$piece} {
+		background-image: url("../images/w#{$piece}.svg");
+	}
+	.b#{$piece} {
+		background-image: url("../images/b#{$piece}.svg");
+	}
+}
