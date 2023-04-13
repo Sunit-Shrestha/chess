@@ -6,7 +6,11 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"add": "git add ",
+		"commit": "git commit -m 'Build.'",
+		"push": "git push origin main",
+		"deploy": "npm run add && npm run commit && npm run push"
 	},
 	"devDependencies": {
 		"@fullhuman/postcss-purgecss": "^5.0.0",
