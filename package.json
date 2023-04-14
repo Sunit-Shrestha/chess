@@ -7,10 +7,9 @@
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"add": "git add ",
-		"commit": "git commit -m 'Build.'",
-		"push": "git push origin main",
-		"deploy": "npm run add && npm run commit && npm run push"
+		"commit": "npm run build && git add build -f && git commit -m Build",
+		"push": "git subtree push --prefix build origin gh-pages",
+		"deploy": "npm run commit && npm run push"
 	},
 	"devDependencies": {
 		"@fullhuman/postcss-purgecss": "^5.0.0",
