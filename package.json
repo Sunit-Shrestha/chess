@@ -5,11 +5,9 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
+		"build": "vite build --emptyOutDir",
 		"preview": "vite preview",
-		"commit": "npm run build && git add build -f && git commit -m Build",
-		"push": "git subtree push --prefix build origin gh-pages",
-		"deploy": "npm run commit && npm run push"
+		"deploy": "cd ../dist && git add . && git commit -m Build && git push origin gh-pages && cd ../project"
 	},
 	"devDependencies": {
 		"@fullhuman/postcss-purgecss": "^5.0.0",
