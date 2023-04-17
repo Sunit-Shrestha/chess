@@ -2,7 +2,7 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-	base: "/Chess/",
+	base: "/chess/",
 	build: {
 		outDir: "../dist",
 		rollupOptions: {
