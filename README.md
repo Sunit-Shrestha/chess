@@ -1,3 +1,3 @@
 # Chess
 
-[Visit the website](sunitshrestha.com.np/chess)
+[Visit the website](www.sunitshrestha.com.np/chess)
