@@ -1,9 +1,7 @@
-make board
-showmoves:
-    blocked
-    pinned
+moves left:
+    en passant
+    castling
     check
-    king-moves
     checkmate
-makemove
-timer
+    pinned
+    check after removal
