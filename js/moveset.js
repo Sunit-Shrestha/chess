@@ -1,50 +1,11 @@
-/*
-p -> pawn,
-n -> knight,
-b -> bishop,
-r -> rook,
-q -> queen,
-k -> king
-*/
-
 import {
-	add,
-	remove,
-	addListeners,
+	removeHints,
+	showHints,
 	isEmpty,
 	isOpponent,
+	isCheck,
 } from "./board_utils.js";
 export { p, n, b, r, q, k };
-
-function move(e) {
-	let hint = e.currentTarget;
-	let piece = document.getElementById(hint.hintFor).piece;
-	remove(hint.hintFor, piece);
-	add(hint.id, piece);
-	removeHints();
-	let nextTurn = piece[0] == "w" ? "b" : "w";
-	addListeners(nextTurn);
-}
-
-function showHints(hints, hintFor) {
-	for (let i = 0; i < hints.length; i++) {
-		let hint = document.getElementById(hints[i]);
-		hint.classList.add("hint");
-		hint.hintFor = hintFor;
-		hint.addEventListener("click", move);
-	}
-}
-
-function removeHints() {
-	for (let i = 0; i < 8; i++) {
-		for (let j = 0; j < 8; j++) {
-			let box = document.getElementById(i * 10 + j);
-			box.hintFor = "";
-			box.classList.remove("hint");
-			box.removeEventListener("click", move);
-		}
-	}
-}
 
 function p(color, posString) {
 	removeHints();
@@ -81,6 +42,7 @@ function p(color, posString) {
 }
 
 function n(color, posString) {
+	removeHints();
 	let hints = [];
 	let jumps = [-8, -12, -19, -21, 8, 12, 19, 21];
 	let pos = Number(posString);
@@ -94,6 +56,7 @@ function n(color, posString) {
 }
 
 function b(color, posString) {
+	removeHints();
 	let hints = [];
 	let jumps = [-9, -11, 9, 11];
 	let pos = Number(posString);
@@ -115,6 +78,7 @@ function b(color, posString) {
 }
 
 function r(color, posString) {
+	removeHints();
 	let hints = [];
 	let jumps = [-1, -10, 1, 10];
 	let pos = Number(posString);
@@ -136,6 +100,7 @@ function r(color, posString) {
 }
 
 function q(color, posString) {
+	removeHints();
 	let hints = [];
 	let jumps = [-1, -9, -10, -11, 1, 9, 10, 11];
 	let pos = Number(posString);
@@ -157,15 +122,17 @@ function q(color, posString) {
 }
 
 function k(color, posString) {
+	removeHints();
 	let hints = [];
 	let jumps = [-1, -9, -10, -11, 1, 9, 10, 11];
 	let pos = Number(posString);
 	for (let i = 0; i < jumps.length; i++) {
 		let hintPos = pos + jumps[i];
-		if (isEmpty(hintPos) || isOpponent(hintPos, color)) {
+		if (
+			(isOpponent(hintPos, color) || isEmpty(hintPos)) &&
+			!isCheck(hintPos, color)
+		)
 			hints.push(hintPos);
-		}
 	}
-	console.log(hints);
 	showHints(hints, pos);
 }
